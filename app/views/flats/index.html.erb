@@ -1,0 +1,17 @@
+<h1>All our Flats</h1>
+<p>All <%= Flat.count %> flats.</p>
+<%= link_to "Add new flat", new_flat_path %>
+
+<% @flats.each do |flat| %>
+  <div class="d-flex">
+    <h3><%= "#{flat.name}" %></h3>
+    <p><%= "#{flat.address}" %></p>
+    <div class="d-flex">
+      <p><%= "#{flat.number_of_guests}" %></p>
+      </p><%= "#{flat.price_per_night}" %><p>
+      <i><%= link_to "More info", flat_path(flat) %></i>
+      <i><%= link_to "Edit", edit_flat_path(flat) %></i>
+      <i><%= link_to "Remove", flat_path(flat), method: :delete, data: { confirm: "Are you sure?" } %></i>
+    </div>
+  </div>
+<% end %>
